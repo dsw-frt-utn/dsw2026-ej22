@@ -1,6 +1,6 @@
-/* =========================================
+/* 
    MÓVIL (Mobile-First)
-========================================= */
+ */
 .dashboard-layout {
   display: flex;
   flex-direction: column;
@@ -162,9 +162,9 @@
   font-size: 0.85rem;
 }
 
-/* =========================================
+/*
    ESCRITORIO (Media Query)
-========================================= */
+ */
 @media (min-width: 768px) {
   .dashboard-layout {
     display: grid;

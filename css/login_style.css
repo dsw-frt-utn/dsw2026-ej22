@@ -15,10 +15,23 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
+.login-logo {
+  display: block;
+  margin: 0 auto 2rem auto;
+  width: 90px; /* Ajusta el tamaño según sea necesario */
+}
+
 .login-card label {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.login-welcome {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
 }
 
 .input-group {
