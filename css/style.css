@@ -1,0 +1,19 @@
+:root {
+  /* Paleta de colores MedPortal */
+  --bg-dark-blue: #03203a;
+  --bg-main: #f4f7f9;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --accent-blue: #0e4c84;
+  --active-green: #10b981;
+  --warning-yellow: #f59e0b;
+  --alert-blue-bg: #e6f2fb;
+  --border-color: #e2e8f0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}

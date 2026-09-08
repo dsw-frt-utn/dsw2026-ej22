@@ -1,0 +1,78 @@
+body {
+  background-color: var(--bg-dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.login-card {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.login-logo {
+  display: block;
+  margin: 0 auto 2rem auto;
+  width: 90px; /* Ajusta el tamaño según sea necesario */
+}
+
+.login-card label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.login-welcome {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  outline: none;
+}
+
+.btn-primary {
+  width: 100%;
+  background-color: var(--bg-dark-blue);
+  color: white;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.security-notice {
+  background-color: var(--alert-blue-bg);
+  padding: 1rem;
+  border-radius: 0 0 8px 8px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin: 2rem -2.5rem -2.5rem -2.5rem;
+}
