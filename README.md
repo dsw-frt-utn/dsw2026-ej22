@@ -21,3 +21,5 @@ menuBtn.addEventListener('click', () => {
 ```
 
 No olvides agregar los estilos CSS necesarios para que el menú se oculte y se muestre correctamente en modo móvil.
+
+### Seguir estilos de UI del TPI
