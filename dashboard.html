@@ -1,42 +1,238 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listado de Productos</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="dashboard_style.css">
-  <script src="dashboard.js"></script>
-</head>
-<body>
-  <div class="dashboard-container">
-    <header>
-      <span>Gestor de turnos</span>
-      <div>
-        <button class="menu">&#9776;</button>
-        <button id="logout">Cerrar Sesión</button>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de Administración | MedPortal</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard_style.css" />
+  </head>
+  <body>
+    <div class="dashboard-layout">
+      <!-- MENÚ LATERAL -->
+      <nav id="sidebar" class="sidebar" aria-label="Menú principal">
+        <div class="sidebar-header">
+          <h2>Admin Portal</h2>
+          <span>Healthcare Management</span>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a href="dashboard.html" class="active" aria-current="page"
+              ><i class="fa-solid fa-table-cells-large" aria-hidden="true"></i> Panel</a
+            >
+          </li>
+          <li>
+            <a href="dashboard.html#directorio"
+              ><i class="fa-solid fa-briefcase-medical" aria-hidden="true"></i> Doctores</a
+            >
+          </li>
+          <li>
+            <a href="especialidades.html"
+              ><i class="fa-solid fa-shapes" aria-hidden="true"></i> Especialidades</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fa-solid fa-users-viewfinder" aria-hidden="true"></i> Búsqueda de Pacientes</a
+            >
+          </li>
+        </ul>
+        <div class="sidebar-footer">
+          <a href="#" class="sidebar-footer-link"
+            ><i class="fa-solid fa-gear" aria-hidden="true"></i> Configuración</a
+          >
+          <button type="button" id="btn-logout" class="sidebar-footer-link">
+            <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+            Cerrar Sesión
+          </button>
+          <div class="user-profile">
+            <img
+              src="https://ui-avatars.com/api/?name=Chibi&background=0b4a7f&color=fff"
+              alt=""
+            />
+            <div class="user-info">
+              <p>Chibi</p>
+              <span>Administrador</span>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="sidebar-overlay" class="sidebar-overlay" hidden></div>
+
+      <!-- CONTENIDO PRINCIPAL -->
+      <div class="main-wrapper">
+        <header class="mobile-topbar">
+          <button
+            type="button"
+            id="btn-toggle-menu"
+            class="menu-btn"
+            aria-controls="sidebar"
+            aria-expanded="false"
+            aria-label="Abrir menú"
+          >
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+          <span class="mobile-topbar-brand">Admin Portal</span>
+        </header>
+
+        <main class="main-content">
+          <header class="page-header">
+            <div>
+              <h1 class="page-title">Vista General de Gestión</h1>
+              <p class="page-subtitle">
+                Configure el personal médico y las especialidades del
+                departamento.
+              </p>
+            </div>
+          </header>
+
+          <div class="header-actions">
+            <a href="#" class="btn btn-primary"
+              ><i class="fa-solid fa-plus" aria-hidden="true"></i> Agregar Nuevo
+              Doctor</a
+            >
+            <a href="especialidad-crear.html" class="btn btn-outline"
+              ><i class="fa-solid fa-shapes" aria-hidden="true"></i> Agregar
+              Nueva Especialidad</a
+            >
+          </div>
+
+          <!-- TARJETAS KPI -->
+          <section class="kpi-grid" aria-label="Indicadores">
+            <article class="kpi-card">
+              <div class="kpi-header">
+                <div class="kpi-icon">
+                  <i class="fa-solid fa-briefcase-medical" aria-hidden="true"></i>
+                </div>
+                <span class="kpi-badge badge-success">+4 este mes</span>
+              </div>
+              <p class="kpi-title">Doctores activos</p>
+              <p class="kpi-number">124</p>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-header">
+                <div class="kpi-icon">
+                  <i class="fa-solid fa-table-cells-large" aria-hidden="true"></i>
+                </div>
+                <span class="kpi-badge badge-neutral">Estable</span>
+              </div>
+              <p class="kpi-title">Especialidades activas</p>
+              <p id="specialty-count" class="kpi-number">0</p>
+            </article>
+            <article class="kpi-card">
+              <div class="kpi-header">
+                <div class="kpi-icon">
+                  <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
+                </div>
+                <span class="kpi-badge badge-info">Hoy</span>
+              </div>
+              <p class="kpi-title">Turnos confirmados para hoy</p>
+              <p class="kpi-number">48</p>
+            </article>
+          </section>
+
+          <!-- DIRECTORIO DE DOCTORES -->
+          <section id="directorio" class="table-card" aria-labelledby="directorio-title">
+            <div class="table-card-header">
+              <h2 id="directorio-title">Directorio de Profesionales Médicos</h2>
+              <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input
+                  type="search"
+                  id="search-doctor"
+                  placeholder="Buscar por nombre..."
+                  aria-label="Buscar doctor por nombre"
+                />
+              </div>
+            </div>
+            <div class="table-scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre del Doctor</th>
+                    <th scope="col">Especialidad</th>
+                    <th scope="col">Estado de Disponibilidad</th>
+                    <th scope="col" class="col-actions">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="doctor-table-body">
+                  <tr>
+                    <td>
+                      <div class="doctor-info">
+                        <img
+                          src="https://ui-avatars.com/api/?name=James+Wilson&background=0D8ABC&color=fff"
+                          alt=""
+                        />
+                        <span class="doctor-name">Dr. James Wilson</span>
+                      </div>
+                    </td>
+                    <td>Cardiología</td>
+                    <td><span class="badge badge-dot badge-success">Activo</span></td>
+                    <td class="col-actions"></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="doctor-info">
+                        <img
+                          src="https://ui-avatars.com/api/?name=Elena+Rodriguez&background=0f9d8a&color=fff"
+                          alt=""
+                        />
+                        <span class="doctor-name">Dr. Elena Rodriguez</span>
+                      </div>
+                    </td>
+                    <td>Neurología</td>
+                    <td><span class="badge badge-dot badge-success">Activo</span></td>
+                    <td class="col-actions"></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="doctor-info">
+                        <img
+                          src="https://ui-avatars.com/api/?name=Robert+Chen&background=5b6b7d&color=fff"
+                          alt=""
+                        />
+                        <span class="doctor-name">Dr. Robert Chen</span>
+                      </div>
+                    </td>
+                    <td>Pediatría</td>
+                    <td><span class="badge badge-dot badge-warning">De Licencia</span></td>
+                    <td class="col-actions"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p id="doctor-empty-state" class="table-empty" aria-live="polite" hidden>
+              No se encontraron doctores con ese nombre.
+            </p>
+            <div class="table-footer">
+              <span id="doctor-results">Mostrando 1 a 3 de 3 resultados</span>
+              <div class="pagination">
+                <button type="button" class="btn-pagination" aria-label="Página anterior" disabled>
+                  <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn-pagination" aria-label="Página siguiente" disabled>
+                  <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <footer class="main-footer">
+            Gestor de Turnos &copy; 2026 - Proyecto Académico
+          </footer>
+        </main>
       </div>
-    </header>
-    <nav id="sidebar">
-      <ul>
-        <li><a href="#">Panel</a></li>
-      </ul>
-    </nav>
-    <main>
-      <h1>Pacientes</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Paciente</th>
-          </tr>
-        </thead>
-        <tbody id="product-table-body">
-          <!-- Los productos se cargarán aquí dinámicamente -->
-        </tbody>
-      </table>
-    </main>
-    <footer>Mi Aplicación &copy; 2024</footer>
-  </div>
-</body>
+    </div>
+    <script src="js/layout.js"></script>
+    <script src="js/specialties-store.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
 </html>

@@ -1,25 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio de Sesion</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="login_style.css">
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Login Gestor de Turnos</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/login_style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main class="login-container">
+      <section class="login-card">
+        <h1 class="visually-hidden">Iniciar sesión en el portal</h1>
 
-  <script src="login.js"></script>
-</head>
-<body>
-  <div class="login-container">
-    <form>
-      <label for="username">Usuario:</label>
-      <input type="text" id="username" name="username" required>
-      <br>
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" required>
-      <br>
-      <button type="submit">Iniciar Sesión</button>
-    </form>
-  </div>
-</body>
+        <img src="img/logo.svg" alt="MedPortal Logo" class="login-logo" />
+
+        <p class="login-welcome">
+          Bienvenido de nuevo<br />
+          Por favor, autentíquese para acceder al gestor de turnos.
+        </p>
+
+        <form id="login-form" class="form-container">
+          <label for="username" class="form-label">Nombre de usuario</label>
+          <div class="input-group">
+            <i class="fa-solid fa-user input-icon"></i>
+            <input
+              type="text"
+              id="username"
+              class="form-input"
+              placeholder="Ingrese ID de admin"
+              required
+            />
+          </div>
+
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-group">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input
+              type="password"
+              id="password"
+              class="form-input"
+              placeholder="********"
+              required
+            />
+          </div>
+
+          <button type="submit" id="btn-submit" class="btn-primary">
+            Iniciar Sesión <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          </button>
+        </form>
+
+        <!-- Usamos aside porque es un aviso secundario al contenido principal -->
+        <aside class="security-notice">
+          <strong>🛡️ Solo Acceso Seguro:</strong> Este sistema es para personal
+          médico autorizado.Los intentos de acceso no autorizados son registrados y monitoreados para su cumplimiento.
+        </aside>
+      </section>
+    </main>
+    <script src="js/login.js"></script>
+  </body>
 </html>
